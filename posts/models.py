@@ -10,6 +10,8 @@ class Post(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True)
     def __str__(self) -> str:
         return self.title
+
+
     
     @property
     def get_comment_count(self):

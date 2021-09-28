@@ -20,7 +20,7 @@
                     <p class="small">{{ object.publish_date | date:"D d M Y" }}</p>
                 </div>
                 <div class="row2">
-                    <span><i class="fas fa-clock"></i>3 min de lectura</span>
+                    <span><i class="fas fa-clock"></i>{{object.content.html | wordcount  }} min de lectura</span>
                     <span><i class="fas fa-comment-alt"></i>{{ object.get_comment_count }}</span>
                 </div>
             </div>
