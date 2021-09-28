@@ -1,0 +1,22 @@
+{% load static %}
+<head>
+    {% include 'django_quill/media.html' %}
+    <script src="https://kit.fontawesome.com/c295f5f2e4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'posts/style.css' %}">
+    
+</head> 
+<div class="create">
+    <div class="container">
+        <div class="main">
+            <form method="POST">
+            <div class="head">
+                <a href="/"><img src="{% static 'posts/logo.svg' %}" ></a>
+                <button class="add" style="cursor:pointer;" type="submit"><i class="fas fa-save"></i>GUARDAR</button>   
+            </div>
+                {% csrf_token %}
+                <input class="title" type="text" placeholder="Titulo del artículo" name="title" value="{{title}}" autocomplete="off">  
+                {{form.content}}
+            </form>
+        </div>
+    </div>
+</div>

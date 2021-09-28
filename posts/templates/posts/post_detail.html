@@ -1,0 +1,46 @@
+{% load static %}
+    <head>
+        {% include 'django_quill/media.html' %}
+        <script src="https://kit.fontawesome.com/c295f5f2e4.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'posts/style.css' %}">
+        
+    </head> 
+
+    <div class="detail">
+        <div class="container">
+            <div class="main">
+                <div class="head">
+                    <a href="/"><img src="{% static 'posts/logo.svg' %}" ></a>
+                </div>
+                <div class="content">
+                    <h1 class="title">{{object.title}}</h1>
+                    <div class="cont" style="height: 320px;">{{ object.content.html | safe }}</div>
+                </div>
+                <div style=" text-align: end; width: 1050px;" >
+                    <form method="POST">
+                        {% csrf_token %}
+                    
+                        <div style="text-align: left; margin-left: 25px;">
+                            <input class="username" type="text" placeholder="Nombre" name="name" value="{{name}}" autocomplete="off" required>  
+
+                        </div>
+                        <textarea class="comment" name="content" value="{{content}}" cols="30" rows="10" placeholder="Comentario" required></textarea>
+                        <button class="save" style="cursor:pointer;" type="submit"><i class="fas fa-comment-alt"></i> COMENTAR </button>
+                    </form>
+
+                    {% for comment in object.comments %}
+                    <div class="comments" style="text-align: start;">
+                        <div style="margin-left: 25px;">
+                            <h3>{{comment.name}}</h3>
+                            <p class="small">{{comment.timestamp }}</p>
+                            <p>{{comment.content}}</p>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+

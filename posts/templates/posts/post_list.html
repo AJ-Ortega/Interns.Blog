@@ -1,0 +1,34 @@
+{% load static %}
+<script src="https://kit.fontawesome.com/c295f5f2e4.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'posts/style.css' %}">
+
+
+<div class="index">
+    <div class="container">
+        <div class="main">
+            <div class="head">
+                <a href="/"><img src="{% static 'posts/logo.svg' %}" ></a>
+                <a href="/create" >
+                    <button class="add" style="cursor:pointer;"><i class="fas fa-plus"></i>CREAR</button>
+                </a>
+            </div>
+            {% for object in object_list %}
+            <a href="{{ object.id }}">
+            <div class="post">
+                <div class="row">
+                    <h3>{{ object.title }}</h3>
+                    <p class="small">{{ object.publish_date | date:"D d M Y" }}</p>
+                </div>
+                <div class="row2">
+                    <span><i class="fas fa-clock"></i>3 min de lectura</span>
+                    <span><i class="fas fa-comment-alt"></i>{{ object.get_comment_count }}</span>
+                </div>
+            </div>
+        </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
